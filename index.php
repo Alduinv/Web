@@ -1,15 +1,9 @@
 <?php
 include './inc/db.php';
 include './inc/form.php';
-
-$sql = 'SELECT * FROM users';
-$result = mysqli_query($conn, $sql);
-$users = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-
-
-mysqli_free_result($result);
-mysqli_close($conn);
+include './inc/select.php';
+include './inc/db_close.php';
+ 
 ?>
 
 
@@ -45,17 +39,17 @@ mysqli_close($conn);
   <h3> enter your info </h3>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">firstName</label>
-    <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="text" name="firstName" class="form-control" id="exampleInputEmail1"  value = "<?php echo $firstName ?>" aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text"><?php echo $errors['firstNameError'] ?> </div>
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">lastName</label>
-    <input type="text" name="lastName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="text" name="lastName" class="form-control" id="exampleInputEmail1" value = "<?php echo $lastName ?>" aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text"><?php echo $errors['lastNameError'] ?></div>
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="text" name="email" class="form-control" id="exampleInputEmail1"  value = "<?php echo $email ?>" aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text"><?php echo $errors['emailError'] ?></div>
   </div>
   
