@@ -1,10 +1,24 @@
 <?php
+include './inc/db.php';
+
 $firstName =    $_POST['firstName'];
 $lastName =     $_POST['lastName'];
 $email =        $_POST['email'];
+
 if(isset($_POST['submit'])){
-echo $firstName . '/ ' . $lastName . '/ ' . $email;
+//echo $firstName . '/ ' . $lastName . '/ ' . $email;
+
+$sql = "INSERT INTO users(firstName, lastName, email) 
+values ('$firstName', '$lastName', '$email' )";
+
+if(mysqli_query($conn, $sql)){
+  header('Location: index.php');
+} else{
+  echo 'Error: ' . mysqli_error($conn);
 }
+
+}
+
 
 ?>
 
