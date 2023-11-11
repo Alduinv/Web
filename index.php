@@ -7,17 +7,8 @@ include './inc/db_close.php';
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/bootstrap.rtl.min.css" >
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Document</title>
-</head>
-<body>
-<div class="container">
+<?php include_once './parts.header.php'; ?>
+
 
 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
     <div class="col-md-5 p-lg-5 mx-auto my-5">
@@ -26,7 +17,7 @@ include './inc/db_close.php';
       <a class="btn btn-outline-secondary" href="#">Coming soon</a>
     </div>
   </div>
-
+<!--
   <ul class="list-group list-group-flush">
   <li class="list-group-item">An item</li>
   <li class="list-group-item">A second item</li>
@@ -34,23 +25,27 @@ include './inc/db_close.php';
   <li class="list-group-item">A fourth item</li>
   <li class="list-group-item">And a fifth one</li>
 </ul>
-
-<form class="mt-5" action="index.php" method="POST">
+-->
+<div class="position-relative  text-center ">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+    </div>
+  </div>
+<form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
   <h3> enter your info </h3>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">firstName</label>
-    <input type="text" name="firstName" class="form-control" id="exampleInputEmail1"  value = "<?php echo $firstName ?>" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text"><?php echo $errors['firstNameError'] ?> </div>
+    <label for="firstName" class="form-label">firstName</label>
+    <input type="text" name="firstName" class="form-control" id="firstName"  value = "<?php echo $firstName ?>" >
+    <div  class="form-text error"><?php echo $errors['firstNameError'] ?> </div>
   </div>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">lastName</label>
-    <input type="text" name="lastName" class="form-control" id="exampleInputEmail1" value = "<?php echo $lastName ?>" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text"><?php echo $errors['lastNameError'] ?></div>
+    <label for="lastName" class="form-label">lastName</label>
+    <input type="text" name="lastName" class="form-control" id="lastName" value = "<?php echo $lastName ?>" >
+    <div  class="form-text error"><?php echo $errors['lastNameError'] ?></div>
   </div>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="text" name="email" class="form-control" id="exampleInputEmail1"  value = "<?php echo $email ?>" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text"><?php echo $errors['emailError'] ?></div>
+    <label for="email" class="form-label">Email address</label>
+    <input type="text" name="email" class="form-control" id="email"  value = "<?php echo $email ?>" >
+    <div  class="form-text error"><?php echo $errors['emailError'] ?></div>
   </div>
   
   <button type="submit"  name="submit" class="btn btn-primary">Submit</button>
@@ -58,13 +53,8 @@ include './inc/db_close.php';
 
 
 
-</div>
 
-    
-
-
-
-
+<div class="row">
 <?php foreach($users as $user) : ?>
  <h1> <?php echo htmlspecialchars($user['firstName']) 
  . ' '. htmlspecialchars($user['lastName']) . '<br>' 
@@ -72,7 +62,5 @@ include './inc/db_close.php';
 
 <?php endforeach; ?> 
 
-<script src="./js/bootstrap.bundle.min.js" ></script>
-  <script src="./js/script.js"></script>  
-</body>
-</html>
+
+<?php include_once './parts.footer.php'; ?>
